@@ -1,0 +1,26 @@
+.song-info {
+    text-align: left;
+}
+
+.song-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.song-artist {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.song-album {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.placeholder-title {
+    color: var(--text-muted);
+}
