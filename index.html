@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿网易云音乐播放器</title>
+    
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/cd-player.css">
+    <link rel="stylesheet" href="./css/song-info.css">
+    <link rel="stylesheet" href="./css/control-bar.css">
+    <link rel="stylesheet" href="./css/lyrics.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="main-content">
+            <div class="left-section">
+                <div class="cd-container paused" id="cdContainer">
+                    <div class="cd-outer">
+                        <div class="cd-inner">
+                            <img class="cd-cover" id="cdCover" src="" alt="专辑封面">
+                        </div>
+                        <div class="cd-light"></div>
+                    </div>
+                    <div class="cd-center">
+                        <div class="cd-hole"></div>
+                    </div>
+                </div>
+                <!-- 唱针 -->
+                <div class="needle" id="needle">
+                    <div class="needle-base"></div>
+                    <div class="needle-arm"></div>
+                    <div class="needle-head"></div>
+                </div>
+            </div>
+            
+            <div class="right-section">
+                <div class="song-info">
+                    <h1 class="song-title placeholder-title" id="songTitle">歌曲1</h1>
+                    <p class="song-artist" id="songArtist">未知歌手</p>
+                    <p class="song-album" id="songAlbum">未知专辑</p>
+                </div>
+                
+                <div class="lyrics-container" id="lyricsContainer">
+                    <div class="lyrics-scroll" id="lyricsScroll">
+                        <div class="lyric-line active">暂无歌词</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-bar">
+            <div class="progress-section">
+                <span class="time-display" id="currentTime">0:00</span>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="time-display" id="totalTime">0:00</span>
+            </div>
+            
+            <div class="controls-row">
+                <div class="left-controls">
+                    <button class="control-btn" id="loopBtn" title="顺序播放">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="17,1 21,5 17,9"></polyline>
+                            <path d="M3,11V9a4,4,0,0,1,4-4h14"></path>
+                            <polyline points="7,23 3,19 7,15"></polyline>
+                            <path d="M21,13v2a4,4,0,0,1-4,4H3"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="center-controls">
+                    <button class="control-btn" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="19,20 9,12 19,4 19,20"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                    </button>
+                    <button class="play-btn" id="playBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="8,5 19,12 8,19"></polygon>
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,4 15,12 5,20 5,4"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="right-controls">
+                    <button class="control-btn" id="addMusicBtn" title="添加音乐">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </button>
+                    <input type="file" id="musicInput" accept="audio/*" multiple style="display: none;">
+                    <div class="volume-control">
+                        <button class="control-btn" id="volumeBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"></polygon>
+                                <path d="M19.07,4.93a10,10,0,0,1,0,14.14"></path>
+                                <path d="M15.54,8.46a5,5,0,0,1,0,7.07"></path>
+                            </svg>
+                        </button>
+                        <div class="volume-bar" id="volumeBar">
+                            <div class="volume-fill" id="volumeFill"></div>
+                        </div>
+                    </div>
+                    <button class="control-btn" id="playlistBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3" y2="6"></line>
+                            <line x1="3" y1="12" x2="3" y2="12"></line>
+                            <line x1="3" y1="18" x2="3" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="playlist-panel" id="playlistPanel">
+                <div class="playlist-header">
+                    <h3 class="playlist-title">播放列表</h3>
+                </div>
+                <div class="playlist-content" id="playlistContent"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
