@@ -1,0 +1,68 @@
+.lyrics-container {
+    flex: 1;
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+    min-height: 200px;
+    max-height: 400px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px;
+}
+
+/* 自定义滚动条 */
+.lyrics-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lyrics-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 105, 180, 0.3);
+    border-radius: 3px;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 105, 180, 0.6);
+}
+
+.lyrics-scroll {
+    position: absolute;
+    width: calc(100% - 40px);
+    transition: transform 0.3s ease;
+}
+
+.lyric-line {
+    padding: 12px 0;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+/* 已唱过的歌词 */
+.lyric-line.passed {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+}
+
+/* 当前唱的歌词 */
+.lyric-line.active {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.6), 0 0 30px rgba(255, 105, 180, 0.3);
+    transform: scale(1.05);
+}
+
+/* 未唱的歌词 */
+.lyric-line.pending {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+}
